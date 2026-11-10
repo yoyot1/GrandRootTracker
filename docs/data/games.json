@@ -75,7 +75,7 @@
       },
       {
         "name": "gogogaijin",
-        "faction": "corvid",
+        "faction": "eyrie",
         "score": 17,
         "winner": false,
         "badge": "score",
@@ -90,10 +90,8 @@
         "badge_detail": null
       }
     ],
-    "needs_review": true,
-    "review_notes": [
-      "gogogaijin's faction is a low-confidence read."
-    ],
+    "needs_review": false,
+    "review_notes": [],
     "source": {
       "message_id": "1569548793630691369",
       "attachment_id": "1569548791865024582",
