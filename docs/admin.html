@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Root League Admin</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700&family=IM+Fell+English+SC&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <h1>Root League Admin</h1>
+    <p>Correct what the screenshot reader got wrong. Changes are saved straight to the GitHub repository. <a href="index.html">Back to the ledger</a></p>
+  </header>
+
+  <section aria-labelledby="h-connect">
+    <h2 id="h-connect">Connect</h2>
+    <p class="section-note">Needs a GitHub fine-grained token with Contents read and write on this one repository. It is kept only in this browser.</p>
+    <div class="bar">
+      <label class="field">Owner <input id="owner" autocomplete="off"></label>
+      <label class="field">Repository <input id="repo" autocomplete="off"></label>
+      <label class="field">Branch <input id="branch" value="main" autocomplete="off"></label>
+      <label class="field">Token <input id="token" type="password" autocomplete="off"></label>
+      <button id="connect" class="primary">Load games</button>
+    </div>
+    <p id="status" role="status"></p>
+  </section>
+
+  <section id="editor" hidden>
+    <div class="bar">
+      <button id="save" class="primary" disabled>Save all changes</button>
+      <button id="add">Add a game by hand</button>
+    </div>
+    <h2>Games</h2>
+    <div id="games" style="display:flex;flex-direction:column;gap:14px"></div>
+    <h2>Players</h2>
+    <p class="section-note">Renaming a player updates every game and keeps the old spelling as an alias, so future screenshots match. Aliases are comma-separated.</p>
+    <div id="players" style="display:flex;flex-direction:column;gap:8px"></div>
+    <datalist id="names"></datalist>
+  </section>
+</div>
+
+<script type="module">
+import { FACTIONS, FACTION_IDS, MAPS, MAP_IDS, sortGames } from './stats.js';
+
+const $ = (id) => document.getElementById(id);
+const store = {
+  get(k) { try { return localStorage.getItem('root-admin-' + k) ?? ''; } catch { return ''; } },
+  set(k, v) { try { localStorage.setItem('root-admin-' + k, v); } catch { /* private window */ } },
+};
+function h(tag, attrs = {}, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v === null || v === undefined || v === false) continue;
+    if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else if (k === 'class') el.className = v;
+    else if (k === 'value') el.value = v;
+    else if (k === 'checked') el.checked = v;
+    else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (const kid of kids.flat()) if (kid !== null && kid !== undefined && kid !== false) el.append(kid);
+  return el;
+}
+
+// Defaults: https://OWNER.github.io/REPO/admin.html
+const guessOwner = location.hostname.endsWith('.github.io') ? location.hostname.split('.')[0] : '';
+const guessRepo = location.pathname.split('/').filter(Boolean)[0] ?? '';
+$('owner').value = store.get('owner') || guessOwner;
+$('repo').value = store.get('repo') || (guessRepo.endsWith('.html') ? '' : guessRepo);
+$('branch').value = store.get('branch') || 'main';
+$('token').value = store.get('token');
+
+let games = [];
+let roster = [];
+let originalNames = [];
+const sha = {};
+let dirty = false;
+
+const status = (msg, warn = false) => { $('status').textContent = msg; $('status').className = warn ? 'notice warn' : ''; };
+const markDirty = () => { dirty = true; $('save').disabled = false; };
+
+const b64encode = (text) => {
+  const bytes = new TextEncoder().encode(text);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+};
+const b64decode = (b64) => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\s/g, '')), (c) => c.charCodeAt(0)));
+
+async function gh(file, init = {}) {
+  const url = `https://api.github.com/repos/${$('owner').value.trim()}/${$('repo').value.trim()}/contents/docs/data/${file}`;
+  const res = await fetch(init.method === 'PUT' ? url : `${url}?ref=${encodeURIComponent($('branch').value.trim())}`, {
+    ...init,
+    headers: { accept: 'application/vnd.github+json', authorization: `Bearer ${$('token').value.trim()}` },
+  });
+  if (res.status === 401 || res.status === 403) throw new Error('GitHub rejected the token. Check that it has Contents read and write on this repository.');
+  if (res.status === 404) throw new Error(`Could not find docs/data/${file}. Check the owner, repository and branch.`);
+  if (res.status === 409 || res.status === 422) throw new Error('The data changed on GitHub since you loaded it (a new game probably arrived). Load games again, then redo your edit.');
+  if (!res.ok) throw new Error(`GitHub error ${res.status}`);
+  return res.json();
+}
+async function load(file) {
+  const body = await gh(file);
+  sha[file] = body.sha;
+  return JSON.parse(b64decode(body.content));
+}
+async function put(file, data, message) {
+  const body = await gh(file, {
+    method: 'PUT',
+    body: JSON.stringify({ message, branch: $('branch').value.trim(), sha: sha[file], content: b64encode(JSON.stringify(data, null, 2) + '\n') }),
+  });
+  sha[file] = body.content.sha;
+}
+
+function toLocalInput(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+}
+
+function seatRow(game, p, rerender) {
+  return h('div', { class: 'seat-row' },
+    h('input', { value: p.name, list: 'names', 'aria-label': 'Player', oninput: (e) => { p.name = e.target.value.trim(); markDirty(); } }),
+    h('select', { 'aria-label': 'Faction', onchange: (e) => { p.faction = e.target.value || null; markDirty(); } },
+      h('option', { value: '' }, 'Unknown faction'),
+      FACTION_IDS.map((id) => h('option', { value: id, selected: p.faction === id }, FACTIONS[id].name))),
+    h('input', { type: 'number', min: '0', value: p.score ?? '', 'aria-label': 'Score', placeholder: 'score',
+      oninput: (e) => { p.score = e.target.value === '' ? null : Number(e.target.value); markDirty(); } }),
+    h('select', { 'aria-label': 'Badge', onchange: (e) => { p.badge = e.target.value; if (p.badge !== 'score') p.score = null; markDirty(); rerender(); } },
+      [['score', 'Scored'], ['dominance', 'Dominance'], ['coalition', 'Coalition']].map(([v, label]) => h('option', { value: v, selected: p.badge === v }, label))),
+    h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: p.winner, onchange: (e) => { p.winner = e.target.checked; markDirty(); } }), 'Winner'),
+    h('button', { 'aria-label': `Remove ${p.name || 'player'}`, onclick: () => { game.players.splice(game.players.indexOf(p), 1); markDirty(); rerender(); } }, '✕'));
+}
+
+function gameCard(game) {
+  const card = h('div', { class: 'card' + (game.needs_review ? ' review' : '') });
+  const rerender = () => card.replaceWith(gameCard(game));
+  const src = game.source;
+  const link = src?.guild_id && src?.channel_id && src?.message_id
+    ? `https://discord.com/channels/${src.guild_id}/${src.channel_id}/${src.message_id}` : null;
+  let confirming = false;
+  const del = h('button', { class: 'danger', onclick: () => {
+    if (!confirming) { confirming = true; del.textContent = 'Click again to delete'; return; }
+    games.splice(games.indexOf(game), 1); markDirty(); card.remove();
+  } }, 'Delete game');
+
+  card.append(
+    h('div', { class: 'bar' },
+      h('label', { class: 'field' }, 'Played', h('input', { type: 'datetime-local', value: toLocalInput(game.date),
+        onchange: (e) => { game.date = e.target.value ? new Date(e.target.value).toISOString() : null; markDirty(); } })),
+      h('label', { class: 'field' }, 'Win type', h('select', { onchange: (e) => { game.win_type = e.target.value; markDirty(); } },
+        ['score', 'coalition', 'dominance'].map((v) => h('option', { value: v, selected: game.win_type === v }, v[0].toUpperCase() + v.slice(1))))),
+      h('label', { class: 'field' }, 'Map', h('select', { onchange: (e) => { game.map = e.target.value || null; markDirty(); } },
+        h('option', { value: '' }, 'Unknown'),
+        MAP_IDS.map((v) => h('option', { value: v, selected: game.map === v }, MAPS[v].name)))),
+      link && h('a', { href: link, target: '_blank', rel: 'noopener' }, 'Open the screenshot in Discord'),
+      src?.posted_by && h('span', { class: 'section-note' }, `Posted by ${src.posted_by}`)),
+    game.image && h('a', { href: game.image, target: '_blank', rel: 'noopener' }, h('img', { src: game.image, alt: 'Victory screen for this game', loading: 'lazy', style: 'border-radius:4px;display:block' })),
+    game.review_notes?.length ? h('ul', {}, game.review_notes.map((n) => h('li', {}, n))) : null,
+    game.players.map((p) => seatRow(game, p, rerender)),
+    h('div', { class: 'bar' },
+      h('button', { onclick: () => { game.players.push({ name: '', faction: null, score: null, winner: false, badge: 'score', badge_detail: null }); markDirty(); rerender(); } }, 'Add player'),
+      game.needs_review && h('button', { onclick: () => { game.needs_review = false; game.review_notes = []; markDirty(); rerender(); } }, 'Mark as checked'),
+      del));
+  return card;
+}
+
+function renderAll() {
+  const ordered = [...games.filter((g) => g.needs_review), ...sortGames(games.filter((g) => !g.needs_review))];
+  $('games').replaceChildren(...(ordered.length ? ordered.map(gameCard) : [h('p', { class: 'section-note' }, 'No games yet.')]));
+  $('names').replaceChildren(...roster.map((p) => h('option', { value: p.name })));
+  $('players').replaceChildren(...roster.map((p) =>
+    h('div', { class: 'bar' },
+      h('input', { value: p.name, 'aria-label': 'Player name', oninput: (e) => { p.name = e.target.value.trim(); markDirty(); } }),
+      h('input', { value: (p.aliases ?? []).join(', '), 'aria-label': `Aliases for ${p.name}`, placeholder: 'aliases',
+        oninput: (e) => { p.aliases = e.target.value.split(',').map((s) => s.trim()).filter(Boolean); markDirty(); } }))));
+}
+
+$('connect').addEventListener('click', async () => {
+  for (const k of ['owner', 'repo', 'branch', 'token']) store.set(k, $(k).value.trim());
+  status('Loading…');
+  try {
+    [games, roster] = await Promise.all([load('games.json'), load('players.json')]);
+    originalNames = roster.map((p) => p.name);
+    dirty = false;
+    $('save').disabled = true;
+    $('editor').hidden = false;
+    renderAll();
+    const n = games.filter((g) => g.needs_review).length;
+    status(`Loaded ${games.length} games. ${n ? `${n} need checking and are listed first.` : 'Nothing is waiting to be checked.'}`);
+  } catch (err) { status(err.message, true); }
+});
+
+$('add').addEventListener('click', () => {
+  const blank = () => ({ name: '', faction: null, score: null, winner: false, badge: 'score', badge_detail: null });
+  games.push({ id: `manual-${Date.now()}`, date: new Date().toISOString(), map: null, win_type: 'score', banner_text: '', needs_review: false, review_notes: [], source: null,
+    players: [{ ...blank(), winner: true }, blank(), blank(), blank()] });
+  markDirty();
+  renderAll();
+});
+
+$('save').addEventListener('click', async () => {
+  // Apply renames from the Players list to every game.
+  roster.forEach((p, i) => {
+    const old = originalNames[i];
+    if (old && p.name && old !== p.name) {
+      for (const g of games) for (const s of g.players) if (s.name === old) s.name = p.name;
+      p.aliases = [...new Set([...(p.aliases ?? []), old])];
+    }
+  });
+  roster = roster.filter((p) => p.name);
+  for (const g of games) {
+    g.players = g.players.filter((s) => s.name);
+    for (const s of g.players) if (!roster.some((p) => p.name === s.name)) roster.push({ name: s.name, aliases: [] });
+  }
+  $('save').disabled = true;
+  status('Saving…');
+  try {
+    await put('games.json', games, 'Admin: correct games');
+    await put('players.json', roster, 'Admin: update players');
+    originalNames = roster.map((p) => p.name);
+    dirty = false;
+    renderAll();
+    status('Saved. The ledger updates in about a minute.');
+  } catch (err) { $('save').disabled = false; status(err.message, true); }
+});
+
+window.addEventListener('beforeunload', (e) => { if (dirty) e.preventDefault(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "root-tracker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "ingest": "node scripts/ingest.mjs",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=20" }
+}

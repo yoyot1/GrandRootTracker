@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Root League Ledger</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700&family=IM+Fell+English+SC&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <h1><a class="home" href="#leaderboard">Root League Ledger</a></h1>
+    <p id="summary">Loading games…</p>
+    <nav class="nav" aria-label="Sections">
+      <a href="#leaderboard" data-nav="leaderboard">Leaderboard</a>
+      <a href="#factions" data-nav="factions">Factions</a>
+      <a href="#maps" data-nav="maps">Maps</a>
+      <a href="#games" data-nav="games">Games</a>
+    </nav>
+  </header>
+  <p id="notice" class="notice" hidden></p>
+  <main id="view" class="view"></main>
+  <footer>Games are read from victory screens posted in Discord. Spot a mistake? <a href="admin.html">Fix it on the admin page</a>.</footer>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

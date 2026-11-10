@@ -1,0 +1,47 @@
+name: Ingest victory screens
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"   # twice an hour
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Read Discord and log new games
+        run: node scripts/ingest.mjs
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID || vars.DISCORD_CHANNEL_ID }}
+          DISCORD_GUILD_ID: ${{ secrets.DISCORD_GUILD_ID || vars.DISCORD_GUILD_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL || vars.ANTHROPIC_MODEL }}
+          DISCORD_REPLY: ${{ secrets.DISCORD_REPLY || vars.DISCORD_REPLY }}
+          SAVE_IMAGES: ${{ secrets.SAVE_IMAGES || vars.SAVE_IMAGES }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL || vars.DASHBOARD_URL }}
+      - name: Commit new data
+        if: always()
+        run: |
+          git config user.name "root-tracker"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data docs/img 2>/dev/null || git add docs/data
+          if git diff --cached --quiet; then
+            echo "Nothing new."
+          else
+            git commit -m "Log games from Discord"
+            git pull --rebase
+            git push
+          fi
