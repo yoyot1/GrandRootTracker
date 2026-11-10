@@ -1,1 +1,1185 @@
-[]
+[
+  {
+    "id": "1569548731626295356-1569548731135823942",
+    "date": "2026-11-10T03:06:18.425000+00:00",
+    "map": "autumn",
+    "win_type": "score",
+    "banner_text": "Vagabond Wins",
+    "players": [
+      {
+        "name": "yoyot1",
+        "faction": "vagabond",
+        "score": 33,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "gogogaijin",
+        "faction": "riverfolk",
+        "score": 29,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "duchy",
+        "score": 24,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "Constr",
+        "faction": "hundreds",
+        "score": null,
+        "winner": false,
+        "badge": "dominance",
+        "badge_detail": "fox"
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569548731626295356",
+      "attachment_id": "1569548731135823942",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569548731626295356-1569548731135823942.webp"
+  },
+  {
+    "id": "1569548793630691369-1569548791865024582",
+    "date": "2026-11-10T03:06:33.208000+00:00",
+    "map": "mountain",
+    "win_type": "score",
+    "banner_text": "Hundreds Wins",
+    "players": [
+      {
+        "name": "yoyot1",
+        "faction": "hundreds",
+        "score": 31,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "duchy",
+        "score": 22,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "gogogaijin",
+        "faction": "corvid",
+        "score": 17,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "sabiqm",
+        "faction": "alliance",
+        "score": 9,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "gogogaijin's faction is a low-confidence read."
+    ],
+    "source": {
+      "message_id": "1569548793630691369",
+      "attachment_id": "1569548791865024582",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569548793630691369-1569548791865024582.webp"
+  },
+  {
+    "id": "1569548838425989211-1569548837964750968",
+    "date": "2026-11-10T03:06:43.888000+00:00",
+    "map": "winter",
+    "win_type": "score",
+    "banner_text": "Hundreds Wins",
+    "players": [
+      {
+        "name": "yoyot1",
+        "faction": "hundreds",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "gogogaijin",
+        "faction": "keepers",
+        "score": 26,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "alliance",
+        "score": 19,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "Constr",
+        "faction": "eyrie",
+        "score": 11,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569548838425989211",
+      "attachment_id": "1569548837964750968",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569548838425989211-1569548837964750968.webp"
+  },
+  {
+    "id": "1569548918906294362-1569548918595784754",
+    "date": "2026-11-10T03:07:03.076000+00:00",
+    "map": "lake",
+    "win_type": "score",
+    "banner_text": "Alliance Wins",
+    "players": [
+      {
+        "name": "yoyot1",
+        "faction": "alliance",
+        "score": 31,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "gogogaijin",
+        "faction": "corvid",
+        "score": 29,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "duchy",
+        "score": 24,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "riverfolk",
+        "score": 24,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569548918906294362",
+      "attachment_id": "1569548918595784754",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569548918906294362-1569548918595784754.webp"
+  },
+  {
+    "id": "1569548964171223041-1569548963994927214",
+    "date": "2026-11-10T03:07:13.868000+00:00",
+    "map": "lake",
+    "win_type": "coalition",
+    "banner_text": "Coalition Victory",
+    "players": [
+      {
+        "name": "DibsOnRugarth",
+        "faction": "alliance",
+        "score": 33,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "TheRandomosity",
+        "faction": "vagabond",
+        "score": null,
+        "winner": true,
+        "badge": "coalition",
+        "badge_detail": "alliance"
+      },
+      {
+        "name": "yoyot1",
+        "faction": "duchy",
+        "score": 28,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "eyrie",
+        "score": 27,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569548964171223041",
+      "attachment_id": "1569548963994927214",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569548964171223041-1569548963994927214.webp"
+  },
+  {
+    "id": "1569548998354665512-1569548997134131240",
+    "date": "2026-11-10T03:07:22.018000+00:00",
+    "map": "mountain",
+    "win_type": "score",
+    "banner_text": "Marquise Wins",
+    "players": [
+      {
+        "name": "DibsOnRugarth",
+        "faction": "marquise",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "gogogaijin",
+        "faction": "eyrie",
+        "score": 20,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "corvid",
+        "score": 20,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "riverfolk",
+        "score": 17,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569548998354665512",
+      "attachment_id": "1569548997134131240",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569548998354665512-1569548997134131240.webp"
+  },
+  {
+    "id": "1569549029929652265-1569549029405098004",
+    "date": "2026-11-10T03:07:29.546000+00:00",
+    "map": "mountain",
+    "win_type": "score",
+    "banner_text": "Hundreds Wins",
+    "players": [
+      {
+        "name": "DibsOnRugarth",
+        "faction": "hundreds",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "gogogaijin",
+        "faction": "duchy",
+        "score": 27,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "vagabond",
+        "score": 23,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "alliance",
+        "score": 19,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549029929652265",
+      "attachment_id": "1569549029405098004",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549029929652265-1569549029405098004.webp"
+  },
+  {
+    "id": "1569549073189572661-1569549073000833044",
+    "date": "2026-11-10T03:07:39.860000+00:00",
+    "map": "lake",
+    "win_type": "score",
+    "banner_text": "Riverfolk Company Wins!",
+    "players": [
+      {
+        "name": "gogogaijin",
+        "faction": "riverfolk",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "TheRandomosity",
+        "faction": "marquise",
+        "score": 22,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "Constr",
+        "faction": "hundreds",
+        "score": 20,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "corvid",
+        "score": 19,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "Map read as lake with low confidence."
+    ],
+    "source": {
+      "message_id": "1569549073189572661",
+      "attachment_id": "1569549073000833044",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549073189572661-1569549073000833044.webp"
+  },
+  {
+    "id": "1569549107834396682-1569549107406831767",
+    "date": "2026-11-10T03:07:48.120000+00:00",
+    "map": "winter",
+    "win_type": "score",
+    "banner_text": "Hundreds Wins",
+    "players": [
+      {
+        "name": "gogogaijin",
+        "faction": "hundreds",
+        "score": 31,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "keepers",
+        "score": 28,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "alliance",
+        "score": 25,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "duchy",
+        "score": 16,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549107834396682",
+      "attachment_id": "1569549107406831767",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549107834396682-1569549107406831767.webp"
+  },
+  {
+    "id": "1569549138423717991-1569549138209804369",
+    "date": "2026-11-10T03:07:55.413000+00:00",
+    "map": "autumn",
+    "win_type": "score",
+    "banner_text": "Alliance Wins",
+    "players": [
+      {
+        "name": "shrd1123",
+        "faction": "alliance",
+        "score": 32,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "keepers",
+        "score": 27,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "Constr",
+        "faction": "riverfolk",
+        "score": 19,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "hundreds",
+        "score": 17,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549138423717991",
+      "attachment_id": "1569549138209804369",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549138423717991-1569549138209804369.webp"
+  },
+  {
+    "id": "1569549177543721041-1569549177212506224",
+    "date": "2026-11-10T03:08:04.740000+00:00",
+    "map": "lake",
+    "win_type": "score",
+    "banner_text": "Keepers Wins",
+    "players": [
+      {
+        "name": "gogogaijin",
+        "faction": "keepers",
+        "score": 33,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "hundreds",
+        "score": 21,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "riverfolk",
+        "score": 20,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "vagabond",
+        "score": 15,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549177543721041",
+      "attachment_id": "1569549177212506224",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549177543721041-1569549177212506224.webp"
+  },
+  {
+    "id": "1569549205989761124-1569549205599559721",
+    "date": "2026-11-10T03:08:11.522000+00:00",
+    "map": "mountain",
+    "win_type": "score",
+    "banner_text": "Corvid Wins",
+    "players": [
+      {
+        "name": "DibsOnRugarth",
+        "faction": "corvid",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "alliance",
+        "score": 29,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "duchy",
+        "score": 25,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "TaishiCi",
+        "faction": "hundreds",
+        "score": 22,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549205989761124",
+      "attachment_id": "1569549205599559721",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549205989761124-1569549205599559721.webp"
+  },
+  {
+    "id": "1569549245772464269-1569549245348843723",
+    "date": "2026-11-10T03:08:21.007000+00:00",
+    "map": "autumn",
+    "win_type": "score",
+    "banner_text": "Hundreds Wins",
+    "players": [
+      {
+        "name": "DibsOnRugarth",
+        "faction": "hundreds",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "alliance",
+        "score": 24,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "corvid",
+        "score": 20,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "gogogaijin",
+        "faction": "marquise",
+        "score": 19,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "gogogaijin's faction is a low-confidence read."
+    ],
+    "source": {
+      "message_id": "1569549245772464269",
+      "attachment_id": "1569549245348843723",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549245772464269-1569549245348843723.webp"
+  },
+  {
+    "id": "1569549275447169054-1569549275006894252",
+    "date": "2026-11-10T03:08:28.082000+00:00",
+    "map": "winter",
+    "win_type": "score",
+    "banner_text": "Duchy Wins",
+    "players": [
+      {
+        "name": "gogogaijin",
+        "faction": "duchy",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "Constr",
+        "faction": "corvid",
+        "score": 18,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "hundreds",
+        "score": 14,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "keepers",
+        "score": 13,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549275447169054",
+      "attachment_id": "1569549275006894252",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549275447169054-1569549275006894252.webp"
+  },
+  {
+    "id": "1569549311610589204-1569549310994157681",
+    "date": "2026-11-10T03:08:36.704000+00:00",
+    "map": "lake",
+    "win_type": "score",
+    "banner_text": "Duchy Wins",
+    "players": [
+      {
+        "name": "shrd1123",
+        "faction": "duchy",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "Constr",
+        "faction": "marquise",
+        "score": 13,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "hundreds",
+        "score": 12,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "alliance",
+        "score": 8,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549311610589204",
+      "attachment_id": "1569549310994157681",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549311610589204-1569549310994157681.webp"
+  },
+  {
+    "id": "1569549356749819985-1569549356288311397",
+    "date": "2026-11-10T03:08:47.466000+00:00",
+    "map": "autumn",
+    "win_type": "score",
+    "banner_text": "Hundreds Wins",
+    "players": [
+      {
+        "name": "shrd1123",
+        "faction": "hundreds",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "riverfolk",
+        "score": 23,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "corvid",
+        "score": 14,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "Constr",
+        "faction": "keepers",
+        "score": 7,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549356749819985",
+      "attachment_id": "1569549356288311397",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549356749819985-1569549356288311397.webp"
+  },
+  {
+    "id": "1569549386122534973-1569549385769947307",
+    "date": "2026-11-10T03:08:54.469000+00:00",
+    "map": "winter",
+    "win_type": "score",
+    "banner_text": "Riverfolk Company Wins!",
+    "players": [
+      {
+        "name": "shrd1123",
+        "faction": "riverfolk",
+        "score": 31,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "corvid",
+        "score": 17,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "gogogaijin",
+        "faction": "lizard",
+        "score": 14,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "keepers",
+        "score": 11,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549386122534973",
+      "attachment_id": "1569549385769947307",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549386122534973-1569549385769947307.webp"
+  },
+  {
+    "id": "1569549416564531210-1569549416300421171",
+    "date": "2026-11-10T03:09:01.727000+00:00",
+    "map": "autumn",
+    "win_type": "score",
+    "banner_text": "Duchy Wins",
+    "players": [
+      {
+        "name": "lucas321",
+        "faction": "duchy",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "yoyot1",
+        "faction": "hundreds",
+        "score": 24,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "corvid",
+        "score": 17,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "vagabond",
+        "score": null,
+        "winner": false,
+        "badge": "coalition",
+        "badge_detail": "corvid"
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549416564531210",
+      "attachment_id": "1569549416300421171",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549416564531210-1569549416300421171.webp"
+  },
+  {
+    "id": "1569549444037222462-1569549443894870058",
+    "date": "2026-11-10T03:09:08.277000+00:00",
+    "map": "autumn",
+    "win_type": "score",
+    "banner_text": "Duchy Wins",
+    "players": [
+      {
+        "name": "DibsOnRugarth",
+        "faction": "duchy",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "BuffaloBuffalo",
+        "faction": "hundreds",
+        "score": 25,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "sabiqm",
+        "faction": "marquise",
+        "score": 18,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "keepers",
+        "score": 14,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "sabiqm's faction is a low-confidence read."
+    ],
+    "source": {
+      "message_id": "1569549444037222462",
+      "attachment_id": "1569549443894870058",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549444037222462-1569549443894870058.webp"
+  },
+  {
+    "id": "1569549484793266260-1569549484164259840",
+    "date": "2026-11-10T03:09:17.994000+00:00",
+    "map": "autumn",
+    "win_type": "score",
+    "banner_text": "Vagabond Wins",
+    "players": [
+      {
+        "name": "DibsOnRugarth",
+        "faction": "vagabond",
+        "score": 31,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "sabiqm",
+        "faction": "duchy",
+        "score": 17,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "lucas321",
+        "faction": "marquise",
+        "score": 15,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "alliance",
+        "score": 14,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549484793266260",
+      "attachment_id": "1569549484164259840",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549484793266260-1569549484164259840.webp"
+  },
+  {
+    "id": "1569549514602192906-1569549514304655381",
+    "date": "2026-11-10T03:09:25.101000+00:00",
+    "map": "mountain",
+    "win_type": "score",
+    "banner_text": "Hundreds Wins",
+    "players": [
+      {
+        "name": "shrd1123",
+        "faction": "hundreds",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "duchy",
+        "score": 25,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "gogogaijin",
+        "faction": "eyrie",
+        "score": 19,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "lucas321",
+        "faction": "alliance",
+        "score": 16,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549514602192906",
+      "attachment_id": "1569549514304655381",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549514602192906-1569549514304655381.webp"
+  },
+  {
+    "id": "1569549545598095394-1569549545388376135",
+    "date": "2026-11-10T03:09:32.491000+00:00",
+    "map": "lake",
+    "win_type": "score",
+    "banner_text": "Hundreds Wins",
+    "players": [
+      {
+        "name": "sabiqm",
+        "faction": "hundreds",
+        "score": 31,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "lucas321",
+        "faction": "corvid",
+        "score": 29,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "shrd1123",
+        "faction": "marquise",
+        "score": 26,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "eyrie",
+        "score": 24,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [],
+    "source": {
+      "message_id": "1569549545598095394",
+      "attachment_id": "1569549545388376135",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549545598095394-1569549545388376135.webp"
+  },
+  {
+    "id": "1569549574127882331-1569549573855248434",
+    "date": "2026-11-10T03:09:39.293000+00:00",
+    "map": "lake",
+    "win_type": "score",
+    "banner_text": "Corvid Wins",
+    "players": [
+      {
+        "name": "BuffaloBuffalo",
+        "faction": "corvid",
+        "score": 30,
+        "winner": true,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "DibsOnRugarth",
+        "faction": "vagabond",
+        "score": 24,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "lucas321",
+        "faction": "duchy",
+        "score": 20,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      },
+      {
+        "name": "TheRandomosity",
+        "faction": "eyrie",
+        "score": 18,
+        "winner": false,
+        "badge": "score",
+        "badge_detail": null
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "DibsOnRugarth's faction is a low-confidence read."
+    ],
+    "source": {
+      "message_id": "1569549574127882331",
+      "attachment_id": "1569549573855248434",
+      "channel_id": "1569541540047626302",
+      "guild_id": "1009289170335842397",
+      "posted_by": "Bazaghal"
+    },
+    "image": "img/1569549574127882331-1569549573855248434.webp"
+  }
+]
