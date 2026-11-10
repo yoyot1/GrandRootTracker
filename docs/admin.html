@@ -59,7 +59,7 @@ function h(tag, attrs = {}, ...kids) {
     else if (k === 'checked') el.checked = v;
     else el.setAttribute(k, v === true ? '' : v);
   }
-  for (const kid of kids.flat()) if (kid !== null && kid !== undefined && kid !== false) el.append(kid);
+  for (const kid of kids.flat(Infinity)) if (kid !== null && kid !== undefined && kid !== false) el.append(kid);
   return el;
 }
 
@@ -145,7 +145,7 @@ function gameCard(game) {
     games.splice(games.indexOf(game), 1); markDirty(); card.remove();
   } }, 'Delete game');
 
-  card.append(
+  const parts = [
     h('div', { class: 'bar' },
       h('label', { class: 'field' }, 'Played', h('input', { type: 'datetime-local', value: toLocalInput(game.date),
         onchange: (e) => { game.date = e.target.value ? new Date(e.target.value).toISOString() : null; markDirty(); } })),
@@ -156,13 +156,14 @@ function gameCard(game) {
         MAP_IDS.map((v) => h('option', { value: v, selected: game.map === v }, MAPS[v].name)))),
       link && h('a', { href: link, target: '_blank', rel: 'noopener' }, 'Open the screenshot in Discord'),
       src?.posted_by && h('span', { class: 'section-note' }, `Posted by ${src.posted_by}`)),
-    game.image && h('a', { href: game.image, target: '_blank', rel: 'noopener' }, h('img', { src: game.image, alt: 'Victory screen for this game', loading: 'lazy', style: 'border-radius:4px;display:block' })),
+    game.image && h('a', { href: game.image, target: '_blank', rel: 'noopener' }, h('img', { class: 'shot', src: game.image, alt: 'Victory screen for this game', loading: 'lazy' })),
     game.review_notes?.length ? h('ul', {}, game.review_notes.map((n) => h('li', {}, n))) : null,
     game.players.map((p) => seatRow(game, p, rerender)),
     h('div', { class: 'bar' },
       h('button', { onclick: () => { game.players.push({ name: '', faction: null, score: null, winner: false, badge: 'score', badge_detail: null }); markDirty(); rerender(); } }, 'Add player'),
       game.needs_review && h('button', { onclick: () => { game.needs_review = false; game.review_notes = []; markDirty(); rerender(); } }, 'Mark as checked'),
-      del));
+      del)];
+  card.append(...parts.flat(Infinity).filter(Boolean));
   return card;
 }
 

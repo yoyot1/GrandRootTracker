@@ -28,6 +28,8 @@
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
+img { max-width: 100%; height: auto; }
+.shot { display: block; width: 100%; max-width: 640px; border-radius: 4px; }
 body {
   margin: 0;
   background: var(--bg);

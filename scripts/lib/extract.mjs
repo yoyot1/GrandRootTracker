@@ -10,26 +10,29 @@ Layout of a victory screen:
 - Each banner has a round badge. Normally it holds the player's score. If it holds an icon instead, the player has no score: a suit icon (fox, rabbit, mouse, bird) means they played a dominance card; a faction icon on a Vagabond's banner means the Vagabond formed a coalition with that faction.
 - Each player's character stands or lies above their banner, in the same left-to-right order.
 
-Identify each player's faction from the banner colour and the character together:
-- marquise: orange banner, cat
-- eyrie: dark blue banner, blue or purple bird with a crest
-- alliance: green banner, fox in a pale green coat
-- vagabond: grey banner, a lone adventurer (animal varies: raccoon, badger, wolf, beaver, opossum and others)
-- riverfolk: teal banner, brown otter
-- lizard: olive / yellow-green banner, pale green lizard
-- duchy: tan / sand banner, mole in a miner's helmet
-- corvid: purple banner, hooded crow
-- hundreds: red banner, rat in a red tunic
-- keepers: steel-blue / grey-blue banner, badger in blue armour with a spear
+Identify each player's faction. The banner colour is the main cue; the character above the banner confirms it.
+- marquise: bright ORANGE banner. Small pale grey cat with very large round yellow eyes ringed in black (it can look like goggles), orange tunic, sword at the belt.
+- eyrie: deep royal BLUE banner (dark, saturated). Jay-like bird with a spiky crest, grey cloak and blue scarf. Its feathers can look blue or blue-violet; the banner is still blue.
+- alliance: GREEN banner. Orange fox in a pale green coat.
+- vagabond: GREY banner. A lone adventurer; the animal varies (raccoon, badger, wolf, beaver, opossum and others).
+- riverfolk: TEAL / turquoise banner. Brown otter with a green neckerchief.
+- lizard: OLIVE / yellow-green banner. Pale green lizard.
+- duchy: pale TAN / sand banner (yellowish, much lighter and less saturated than Marquise orange). Mole in a yellow miner's helmet with round glasses.
+- corvid: PURPLE banner. Hunched crow with a dark beak, purple hood and a patched mauve tunic.
+- hundreds: RED banner. Dark rat with large pink ears in a red tunic.
+- keepers: muted STEEL-BLUE / slate banner (lighter and greyer than Eyrie blue). Badger in pale blue armour holding a tall spear.
 
-Eyrie and Keepers banners are both blue, and Duchy and Marquise banners are both orange-ish: use the character to decide, and set faction_confidence to "low" if the two cues disagree or the character is hard to see.
+Losing characters are drawn smaller and may be slumped, dizzy or lying face down, which hides detail. When that happens rely on the banner colour.
+Pairs that get confused: Eyrie (blue banner, bird) vs Corvid (purple banner, crow); Eyrie (deep blue) vs Keepers (grey-blue, badger); Marquise (bright orange, cat) vs Duchy (pale tan, mole). Compare the banners on the same screen against each other before deciding.
+Apart from the Vagabond, no faction appears twice in a game, so use elimination.
+Set faction_confidence to "high" whenever the banner colour and the character agree, or the banner colour alone is unmistakable. Use "low" only if you genuinely cannot decide between two factions.
 
 Identify the map from the scenery behind the characters:
 - winter: snow on the ground and on the trees
-- autumn: dark pine forest on dark ground, flat-topped grey cliffs behind
-- mountain: jagged mountain peaks behind the forest, reddish-brown ground
-- lake: bright green forest and grass with low rolling hills, no cliffs or peaks
-Set map_confidence to "low" if the scenery does not clearly match one of these.
+- autumn: dark pine forest on dark, almost black ground, with flat-topped grey cliffs behind
+- mountain: jagged red-and-grey mountain peaks behind the forest, reddish-brown or pinkish ground
+- lake: bright green forest on green grass, with dense rows of small green trees and a low grey-green ridge on the horizon; no cliffs and no peaks
+Green grass underfoot means lake. Set map_confidence to "low" only if the scenery fits none of these.
 
 Copy player names exactly as written, character for character. The font draws the digit 1 and lowercase l identically; just give your best reading.
 
