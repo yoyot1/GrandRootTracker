@@ -396,10 +396,8 @@
         "badge_detail": null
       }
     ],
-    "needs_review": true,
-    "review_notes": [
-      "Map read as lake with low confidence."
-    ],
+    "needs_review": false,
+    "review_notes": [],
     "source": {
       "message_id": "1569549073189572661",
       "attachment_id": "1569549073000833044",
@@ -653,10 +651,8 @@
         "badge_detail": null
       }
     ],
-    "needs_review": true,
-    "review_notes": [
-      "gogogaijin's faction is a low-confidence read."
-    ],
+    "needs_review": false,
+    "review_notes": [],
     "source": {
       "message_id": "1569549245772464269",
       "attachment_id": "1569549245348843723",
@@ -954,17 +950,15 @@
       },
       {
         "name": "shrd1123",
-        "faction": "keepers",
+        "faction": "eyrie",
         "score": 14,
         "winner": false,
         "badge": "score",
         "badge_detail": null
       }
     ],
-    "needs_review": true,
-    "review_notes": [
-      "sabiqm's faction is a low-confidence read."
-    ],
+    "needs_review": false,
+    "review_notes": [],
     "source": {
       "message_id": "1569549444037222462",
       "attachment_id": "1569549443894870058",
@@ -1144,7 +1138,7 @@
       },
       {
         "name": "DibsOnRugarth",
-        "faction": "vagabond",
+        "faction": "marquise",
         "score": 24,
         "winner": false,
         "badge": "score",
@@ -1167,10 +1161,8 @@
         "badge_detail": null
       }
     ],
-    "needs_review": true,
-    "review_notes": [
-      "DibsOnRugarth's faction is a low-confidence read."
-    ],
+    "needs_review": false,
+    "review_notes": [],
     "source": {
       "message_id": "1569549574127882331",
       "attachment_id": "1569549573855248434",
