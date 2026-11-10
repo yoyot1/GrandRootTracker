@@ -98,7 +98,7 @@ export function buildGame(extraction, { id, date, source, roster }) {
       score: badge === 'score' && Number.isFinite(p.score) ? p.score : null,
       winner: Boolean(p.on_winner_podium),
       badge,
-      badge_detail: badge === 'score' ? null : (p.badge_detail ?? null),
+      badge_detail: badge === 'score' ? null : (p.badge_detail || null),
     };
   });
 

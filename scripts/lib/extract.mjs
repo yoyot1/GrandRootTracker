@@ -33,32 +33,36 @@ Set map_confidence to "low" if the scenery does not clearly match one of these.
 
 Copy player names exactly as written, character for character. The font draws the digit 1 and lowercase l identically; just give your best reading.
 
-List players left to right.`;
+List players left to right.
+
+Record the result by calling the record_game tool exactly once. Do not answer in prose.`;
 
 const TOOL = {
   name: 'record_game',
   description: 'Record what the screenshot shows.',
   input_schema: {
     type: 'object',
+    additionalProperties: false,
     required: ['is_victory_screen', 'banner_text', 'map', 'map_confidence', 'players'],
     properties: {
       is_victory_screen: { type: 'boolean' },
       banner_text: { type: 'string', description: 'Text of the top banner, or empty.' },
-      map: { type: ['string', 'null'], enum: [...MAP_IDS, null] },
+      map: { type: 'string', enum: [...MAP_IDS, 'unknown'] },
       map_confidence: { type: 'string', enum: ['high', 'low'] },
       players: {
         type: 'array',
         items: {
           type: 'object',
-          required: ['name', 'faction', 'score', 'badge', 'on_winner_podium', 'faction_confidence'],
+          additionalProperties: false,
+          required: ['name', 'faction', 'score', 'badge', 'badge_detail', 'on_winner_podium', 'faction_confidence'],
           properties: {
             name: { type: 'string' },
             faction: { type: 'string', enum: FACTION_IDS },
-            score: { type: ['integer', 'null'], description: 'Null when the badge shows an icon.' },
+            score: { type: 'integer', description: 'The number in the badge. Use 0 when the badge shows an icon instead.' },
             badge: { type: 'string', enum: ['score', 'dominance', 'coalition'] },
             badge_detail: {
-              type: ['string', 'null'],
-              description: 'Dominance suit (fox, rabbit, mouse, bird) or the coalition partner faction id.',
+              type: 'string',
+              description: 'Dominance suit (fox, rabbit, mouse, bird) or the coalition partner faction id. Empty string when the badge is a score.',
             },
             on_winner_podium: { type: 'boolean' },
             faction_confidence: { type: 'string', enum: ['high', 'low'] },
@@ -69,11 +73,8 @@ const TOOL = {
   },
 };
 
-/**
- * Ask Claude to read one screenshot. Returns the record_game input object.
- */
-export async function extractGame({ imageBase64, mediaType, apiKey, model, fetchImpl = fetch }) {
-  const res = await fetchImpl('https://api.anthropic.com/v1/messages', {
+async function request({ imageBase64, mediaType, apiKey, model, fetchImpl, strict }) {
+  return fetchImpl('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -82,9 +83,9 @@ export async function extractGame({ imageBase64, mediaType, apiKey, model, fetch
     },
     body: JSON.stringify({
       model,
-      max_tokens: 1024,
-      tools: [TOOL],
-      tool_choice: { type: 'tool', name: TOOL.name },
+      max_tokens: 4096, // leaves room for the model's thinking as well as the answer
+      tools: [strict ? { ...TOOL, strict: true } : TOOL],
+      tool_choice: { type: 'auto' }, // current models reject a forced tool choice
       messages: [
         {
           role: 'user',
@@ -96,9 +97,31 @@ export async function extractGame({ imageBase64, mediaType, apiKey, model, fetch
       ],
     }),
   });
-  if (!res.ok) throw new Error(`Claude API ${res.status}: ${(await res.text()).slice(0, 300)}`);
+}
+
+/**
+ * Ask Claude to read one screenshot. Returns the record_game input object.
+ * Tries a schema-enforced call first; if the API rejects that request shape,
+ * retries once without enforcement.
+ */
+export async function extractGame({ imageBase64, mediaType, apiKey, model, fetchImpl = fetch }) {
+  const args = { imageBase64, mediaType, apiKey, model, fetchImpl };
+  let res = await request({ ...args, strict: true });
+  if (res.status === 400) {
+    const first = (await res.text()).slice(0, 300);
+    res = await request({ ...args, strict: false });
+    if (!res.ok) throw new Error(`Claude API ${res.status}: ${(await res.text()).slice(0, 300)} (first attempt: ${first})`);
+  } else if (!res.ok) {
+    throw new Error(`Claude API ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  }
   const body = await res.json();
   const block = (body.content ?? []).find((b) => b.type === 'tool_use');
-  if (!block) throw new Error('Claude API returned no structured result');
-  return block.input;
+  if (block) return block.input;
+  // The model answered in text instead of calling the tool: accept JSON if that is what it wrote.
+  const text = (body.content ?? []).filter((b) => b.type === 'text').map((b) => b.text).join('');
+  const match = text.match(/\{[\s\S]*\}/);
+  if (match) {
+    try { return JSON.parse(match[0]); } catch { /* fall through */ }
+  }
+  throw new Error(`Claude did not return a structured result (stop_reason: ${body.stop_reason})`);
 }
